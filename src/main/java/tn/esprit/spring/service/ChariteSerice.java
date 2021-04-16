@@ -10,7 +10,7 @@ public interface ChariteSerice {
 	List<Charite> retrieveAllCharite();
 	
 	
-	
+	//
 
 	
 	void deleteCharite(long id);
