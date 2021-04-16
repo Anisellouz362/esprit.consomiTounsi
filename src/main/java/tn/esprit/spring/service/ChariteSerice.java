@@ -11,7 +11,7 @@ public interface ChariteSerice {
 	
 	
 	
-	//////****************////////////////
+
 	
 	void deleteCharite(long id);
 	
