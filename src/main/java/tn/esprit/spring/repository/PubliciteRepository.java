@@ -3,8 +3,8 @@ package tn.esprit.spring.repository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import tn.esprit.spring.entities.Event;
+import tn.esprit.spring.entities.Publicite;
 @Repository
-public interface EventRepository  extends CrudRepository<Event,Long>{
+public interface PubliciteRepository extends CrudRepository<Publicite, Long>{
 
 }
