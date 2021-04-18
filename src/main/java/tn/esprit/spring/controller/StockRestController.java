@@ -8,21 +8,26 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import tn.esprit.spring.entities.Ray;
 import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.service.IStockSerivce;
+import tn.esprit.spring.service.RayService;
 
 @RestController
+@RequestMapping("/Stock")
 public class StockRestController {
 	@Autowired
 	IStockSerivce iStockService;
+
 	
-	// http://localhost:8081/SpringMVC/servlet/ajouterStock
-	@PostMapping("/ajouterStock")
+	// http://localhost:8081/SpringMVC/servlet/Stock/CommanderStock
+	@PostMapping("/CommanderStock")
 	@ResponseBody
 	public Stock ajouterStock(@RequestBody Stock stock) {
 		iStockService.ajouterStock(stock);
@@ -30,45 +35,34 @@ public class StockRestController {
 	}
 	
 	
-	// http://localhost:8081/SpringMVC/servlet/deleteStock/{IDSTOCK}
+	// http://localhost:8081/SpringMVC/servlet/Stock/deleteStock/{IDSTOCK}
 	 @DeleteMapping("/deleteStock/{IdStock}") 
 	 @ResponseBody
 	public void deleteStock(@PathVariable("IdStock")int IdStock){
 		 iStockService.deleteStock(IdStock);
 	 }
-	 
-//	// http://localhost:8081/SpringMVC/servlet/mettreAjourStock/{IdStock}/{newstock}
-//		 @PutMapping("/mettreAjourStock/{id}/{newetat}") 
-//		 @ResponseBody
-//		 public void mettreAjourStock(@PathVariable("newetat") String etat, @PathVariable("id") int IdStock){
-//			 iStockService.mettreAjourLivraison(IdStock, etat);
-//		 }
-	 
-	 
-		// http://localhost:8081/SpringMVC/servlet/ShowStock
-	 @GetMapping(value = "ShowStock") 
-	 
-	 public List<Stock> ShowStock(){
-		   return iStockService.ShowStock();
-	 }
-	 
-	 
-		// http://localhost:8081/SpringMVC/servlet/ShowStockbyName/{STOCKNAME}
-	 @GetMapping(value = "ShowStockbyName/{stockName}") 
-	 public List<Stock> ShowStockbyName(@PathVariable("stockName") String stockName){
-	 return iStockService.ShowStockbyName(stockName);
-	 }
-	 
-		// http://localhost:8081/SpringMVC/servlet/ShowStockbyQuantity/{STOCKQuantity}
-	 @GetMapping(value = "ShowStockbyQuantity/{QuantityStock}") 
-	 public List<Stock> ShowStockbyQuantity(@PathVariable("QuantityStock") int QuantityStock){
-     return iStockService.ShowStockbyQuantity(QuantityStock);
-	 }
-	 
 
 	
-	 
-	 
-	 
+
+	
+	// http://localhost:8081/SpringMVC/servlet/Stock/retrieve-all-Stock
+				@GetMapping("/retrieve-all-Stock")
+				@ResponseBody
+				public List<Stock> getStock() {
+				List<Stock> list = iStockService.retrieveAllStock();
+				return list;
+				}
+				// http://localhost:8081/SpringMVC/servlet/Stock/modifystock
+				@PutMapping("/modifystock")
+				@ResponseBody
+				public Stock modifystock(@RequestBody Stock stock) {
+				return iStockService.updateStock(stock);
+				}
+				// http://localhost:8081/SpringMVC/servlet/Stock/OutOfStockDetector
+				 @GetMapping(value = "OutOfStockDetector") 
+				 public List<Stock> OutOfStockDetector(){
+			  return iStockService.OutOfStockDetector();
+				 }
+				 
 
 }
