@@ -68,8 +68,6 @@ Optional<Stock> stk = Sr.findById((int) id);
 	   
 	}}
 
-
-
 	@Override
 	public List<Stock> OutOfStockDetector(){
 		return(List<Stock>)Sr.OutOfStockDetector();
