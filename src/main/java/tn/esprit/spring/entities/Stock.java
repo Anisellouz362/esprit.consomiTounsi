@@ -16,6 +16,8 @@ import javax.persistence.Table;
 
 
 
+
+
 @Entity
 @Table(name="Stock")
 
