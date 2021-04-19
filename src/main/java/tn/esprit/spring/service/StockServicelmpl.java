@@ -48,7 +48,7 @@ Optional<Stock> stk = Sr.findById((int) id);
 	    if(stk.isPresent()) 
 	        Sr.deleteById((int) id);}
 
-	@Override
+	/*@Override
 	public Stock updateStock(Stock stock) {
 		// TODO Auto-generated method stub
 		Optional<Stock> stk = Sr.findById(stock.getIdStock());
@@ -66,15 +66,18 @@ Optional<Stock> stk = Sr.findById((int) id);
 	         
 	        return stock;
 	   
-	}}
+	}}*/
+	@Override
+	public Stock updateStock(Stock stock) {
+		// TODO Auto-generated method stub
+		return Sr.save(stock);
+	}
+
 
 	@Override
 	public List<Stock> OutOfStockDetector(){
 		return(List<Stock>)Sr.OutOfStockDetector();
 	}
-
-
-	
 	
 	
 

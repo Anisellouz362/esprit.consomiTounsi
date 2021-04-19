@@ -22,30 +22,29 @@ public class RayRestController {
 	@Autowired
 	RayService Rr;
 	// http://localhost:8081/SpringMVC/servlet/Ray/add-Ray
-			@PostMapping("/add-Ray")
-			@ResponseBody
-			public Ray saveRay(@RequestBody Ray ray) {
-			Ray rayon = Rr.save(ray);
-			return rayon;
-			}
-			// http://localhost:8081/SpringMVC/servlet/Ray/visitevirtuelle
-			@GetMapping("/visitevirtuelle")
-			@ResponseBody
-			public List<Ray> getRay() {
-			List<Ray> list = Rr.retrieveAllRay();
-			return list;
-			}
-			// http://localhost:8081/SpringMVC/servlet/Ray/remove-Ray/{rayon-id}
-			@DeleteMapping("/remove-Ray/{rayon-id}")
-			@ResponseBody
-			public void removeRay(@PathVariable("rayon-id") long rayId) {
-			Rr.deleteRay(rayId);
-			}
-			// http://localhost:8081/SpringMVC/servlet/Ray/modify-Rayon
-			@PutMapping("/modify-Rayon")
-			@ResponseBody
-			public Ray modifyrayon(@RequestBody Ray ray) {
-			
-			return Rr.updateRay(ray);
-			}
+	@PostMapping("/add-Ray")
+	@ResponseBody
+	public Ray saveRay(@RequestBody Ray ray) {
+		Ray rayon = Rr.save(ray);
+		return rayon;
+	}
+	// http://localhost:8081/SpringMVC/servlet/Ray/visitevirtuelle
+	@GetMapping("/visitevirtuelle")
+	@ResponseBody
+	public List<Ray> getRay() {
+		List<Ray> list = Rr.retrieveAllRay();
+		return list;
+	}
+	// http://localhost:8081/SpringMVC/servlet/Ray/remove-Ray/{rayon-id}
+	@DeleteMapping("/remove-Ray/{rayon-id}")
+	@ResponseBody
+	public void removeRay(@PathVariable("rayon-id") long rayId) {
+		Rr.deleteRay(rayId);
+	}
+	// http://localhost:8081/SpringMVC/servlet/Ray/modify-Rayon
+	@PutMapping("/modify-Rayon")
+	@ResponseBody
+	public Ray modifyrayon(@RequestBody Ray ray) {
+		return Rr.updateRay(ray);
+	}
 }

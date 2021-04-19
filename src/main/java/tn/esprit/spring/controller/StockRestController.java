@@ -52,8 +52,8 @@ public class StockRestController {
 				List<Stock> list = iStockService.retrieveAllStock();
 				return list;
 				}
-				// http://localhost:8081/SpringMVC/servlet/Stock/modifystock
-				@PutMapping("/modifystock")
+				// http://localhost:8081/SpringMVC/servlet/Stock/updatestock
+				@PutMapping("/updatestock")
 				@ResponseBody
 				public Stock modifystock(@RequestBody Stock stock) {
 				return iStockService.updateStock(stock);

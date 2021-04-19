@@ -8,15 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface StockRepository extends CrudRepository<Stock , Integer> {
 	
-	@Query(value = "SELECT * FROM Stock WHERE quantity_stock=?1", nativeQuery = true)
-    public List<Stock> ShowStockbyQuantity( int stockQuantity);
-	
-	@Query(value="SELECT * FROM Stock WHERE name_stock=?1", nativeQuery = true)
-	public List<Stock> ShowStockbyName(String stockName );
-	
-	@Query(value="SELECT * FROM Stock WHERE Quantity_Stock =0", nativeQuery = true)
+	@Query(value="SELECT u FROM Stock u WHERE u.QuantityStock=0")
 	public List<Stock> OutOfStockDetector();
-	
 	
 
 }

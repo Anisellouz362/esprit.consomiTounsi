@@ -38,7 +38,7 @@ public class RayServiceImpl implements RayService{
 	    if(rayon.isPresent()) 
 	        Rr.deleteById((int) id);}	
 	
-	@Override
+	/*@Override
 	public Ray updateRay(Ray ray) {
 		// TODO Auto-generated method stub
 		Optional<Ray> rayon = Rr.findById(ray.getRayId());
@@ -57,9 +57,13 @@ public class RayServiceImpl implements RayService{
 	        return ray;
 	    }
 	}
-		
+		*/
 
-
+	@Override
+	public Ray updateRay(Ray ray) {
+		// TODO Auto-generated method stub
+		return Rr.save(ray);
+	}
 
 	}
 
