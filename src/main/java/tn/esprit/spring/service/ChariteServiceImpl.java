@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Charite;
+import tn.esprit.spring.entities.Endroit;
 import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.repository.ChariteRepository;
 
@@ -39,7 +40,7 @@ Optional<Charite> charite = cr.findById(id);
     {
         cr.deleteById(id);}	
 }
-@Override
+/*@Override
 public Charite updateCharite(Charite charit) {
 	// TODO Auto-generated method stub
 	Optional<Charite> charite = cr.findById(charit.getId());
@@ -58,7 +59,12 @@ public Charite updateCharite(Charite charit) {
         return charit;
     }
 }
-	
+	*/
+@Override
+public Charite updateCharite(Charite charit) {
+	// TODO Auto-generated method stub
+	return cr.save(charit);
+}
 public float TotalDonation() {
 	return cr.TotalDonation();
 }

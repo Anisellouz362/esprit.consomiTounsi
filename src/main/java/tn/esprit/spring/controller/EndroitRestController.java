@@ -53,11 +53,10 @@ cr.deleteEndroit(endroitId);
 public Endroit modifyendroit(@RequestBody Endroit endroit) {
 return cr.updateEndroite(endroit);
 }
-//http://localhost:8081/SpringMVC/servlet/Endroit/endroitdisponible
-		@GetMapping("/endroitdisponible")
-		@ResponseBody
-		public List<Endroit> getEndroite() {
-		List<Endroit> list = cr.ListeEndroit();
-		return list;
-		}
-}
+//http://localhost:8081/SpringMVC/servlet/Endroit/endroitreserved
+@GetMapping("/endroitreserved")
+@ResponseBody
+public List<Endroit> getEndroiteR() {
+List<Endroit> listr = cr.ListeEndroitR();
+return listr;
+}}

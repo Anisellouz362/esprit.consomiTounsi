@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Endroit;
+import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.entities.Publicite;
 import tn.esprit.spring.repository.PubliciteRepository;
 
@@ -43,7 +44,7 @@ Optional<Publicite> publicite = pr.findById(id);
 	
 	}
 
-	@Override
+	/*@Override
 	public Publicite updatePublicite(Publicite publicite) {
 		// TODO Auto-generated method stub
 		Optional<Publicite> pub = pr.findById(publicite.getId());
@@ -60,4 +61,11 @@ Optional<Publicite> publicite = pr.findById(id);
 	    	publicite = pr.save(publicite);
 	         
 	        return publicite;
-	    }}}
+	    }}*/
+	
+	@Override
+	public Publicite updatePublicite(Publicite publicite) {
+		// TODO Auto-generated method stub
+		return pr.save(publicite);
+
+}}

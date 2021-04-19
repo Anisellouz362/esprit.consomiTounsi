@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.Charite;
 import tn.esprit.spring.entities.Endroit;
+import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.repository.EndroitRepository;
 
 @Service
@@ -41,7 +42,7 @@ private static final Logger L =  LogManager.getLogger(EventServiceImpl.class);
 	        er.deleteById(id);}	
 	}
 
-	@Override
+	/*@Override
 	public Endroit updateEndroite(Endroit endroit) {
 		// TODO Auto-generated method stub
 		Optional<Endroit> endroite = er.findById(endroit.getId());
@@ -59,11 +60,15 @@ private static final Logger L =  LogManager.getLogger(EventServiceImpl.class);
 	         
 	        return endroit;
 	    }}
-
-	
-	public List<Endroit> ListeEndroit() {
+*/
+	@Override
+	public Endroit updateEndroite(Endroit endroit) {
 		// TODO Auto-generated method stub
-		return er.ListeEndroit();
+		return er.save(endroit);
+	}
+	
+	public List<Endroit> ListeEndroitR(){
+		return er.ListeEndroitR();
 	}
 	
 

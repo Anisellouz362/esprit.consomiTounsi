@@ -45,6 +45,11 @@ public void deleteEvent(long id) {
 @Override
 public Event updateEvent(Event even) {
 	// TODO Auto-generated method stub
+	return Er.save(even);
+}
+/*@Override
+public Event updateEvent(Event even) {
+	// TODO Auto-generated method stub
 	Optional<Event> event = Er.findById(even.getId());
 	if(event.isPresent()) 
     {
@@ -60,7 +65,7 @@ public Event updateEvent(Event even) {
          
         return even;
     }
-}
+}*/
 	
 
 

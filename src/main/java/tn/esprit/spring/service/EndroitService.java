@@ -16,5 +16,5 @@ List<Endroit> retrieveAllEndroit();
 	void deleteEndroit(long id);
 	
 	Endroit updateEndroite(Endroit endroit);
-	public List<Endroit> ListeEndroit();
+	public List<Endroit> ListeEndroitR();
 }
