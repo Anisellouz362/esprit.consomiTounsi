@@ -38,26 +38,7 @@ public class RayServiceImpl implements RayService{
 	    if(rayon.isPresent()) 
 	        Rr.deleteById((int) id);}	
 	
-	/*@Override
-	public Ray updateRay(Ray ray) {
-		// TODO Auto-generated method stub
-		Optional<Ray> rayon = Rr.findById(ray.getRayId());
-		if(rayon.isPresent()) 
-	    {
-		     Ray newRay = rayon.get();
-		     newRay.setRayCapacity(ray.getRayCapacity());
-		     newRay.setRayId(ray.getRayId());
-		     newRay.setRayName(ray.getRayName());
-		     newRay.setRayType(ray.getRayType());
-		     newRay.setArranType(ray.getArranType());
-	        return newRay;
-	    } else {
-	    	ray = Rr.save(ray);
-	         
-	        return ray;
-	    }
-	}
-		*/
+
 
 	@Override
 	public Ray updateRay(Ray ray) {

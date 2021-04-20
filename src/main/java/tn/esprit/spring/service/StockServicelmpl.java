@@ -48,30 +48,13 @@ Optional<Stock> stk = Sr.findById((int) id);
 	    if(stk.isPresent()) 
 	        Sr.deleteById((int) id);}
 
-	/*@Override
-	public Stock updateStock(Stock stock) {
-		// TODO Auto-generated method stub
-		Optional<Stock> stk = Sr.findById(stock.getIdStock());
-		if(stk.isPresent()) 
-	    {
-		    Stock newStock = stk.get();
-		    newStock.setIdStock(stock.getIdStock());
-		    newStock.setNameStock(stock.getNameStock());
-		    newStock.setEntry_Date(stock.getEntry_Date());
-		    newStock.setQuantityStock(stock.getQuantityStock());
-	         
-	        return newStock;
-	    } else {
-	        stock = Sr.save(stock);
-	         
-	        return stock;
-	   
-	}}*/
+	
 	@Override
 	public Stock updateStock(Stock stock) {
 		// TODO Auto-generated method stub
 		return Sr.save(stock);
 	}
+
 
 
 	@Override
