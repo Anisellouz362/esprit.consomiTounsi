@@ -76,6 +76,14 @@ BillService Sr;
 					   public String  get_payment_type_by_id(@PathVariable("id")Long id) {
 						 return  Sr.get_payment_type_by_id(id);
 }
+					   //http://localhost:8081/SpringMVC/servlet/Bill/showPDF/{id}
+						   @GetMapping("/showPDF/{id}")
+						   public void billpdf (@PathVariable("id") Long id) {
+							   
+							 Sr.billpdf(id);
+						   }
+				
+				
 }			
 						   
 			    

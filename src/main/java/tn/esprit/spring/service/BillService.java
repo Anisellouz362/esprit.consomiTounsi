@@ -23,11 +23,7 @@ public interface BillService {
 
 	String get_payment_type_by_id(Long id);
 
-	
-
-	
-
-	
+	void billpdf(Long id);
 
 	
 }

@@ -12,6 +12,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 
 
@@ -25,6 +27,7 @@ public class Facture  {
 	private Date datefacture ;
 	private String adresse;
 	private String amount;
+	
 	@OneToOne
 	private Panier panier;
 	

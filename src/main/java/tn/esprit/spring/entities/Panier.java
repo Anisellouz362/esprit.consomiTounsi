@@ -32,7 +32,7 @@ public class Panier implements Serializable {
 	private Date datepayment;
 	@Enumerated(EnumType.STRING)
 	private Typepayment Typepayment;
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToOne(mappedBy="panier")
 	private Facture facture;
 	public Panier() {
