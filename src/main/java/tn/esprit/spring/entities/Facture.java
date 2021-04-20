@@ -8,10 +8,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+
 
 public class Facture  {
 	@Id
@@ -23,7 +25,8 @@ public class Facture  {
 	private Date datefacture ;
 	private String adresse;
 	private String amount;
-	
+	@OneToOne
+	private Panier panier;
 	
 	
 	public long getId() {
@@ -58,6 +61,12 @@ public class Facture  {
 	}
 	public void setAmount(String amount) {
 		this.amount = amount;
+	}
+	public Panier getPanier() {
+		return panier;
+	}
+	public void setPanier(Panier panier) {
+		this.panier = panier;
 	}
 	
 	
