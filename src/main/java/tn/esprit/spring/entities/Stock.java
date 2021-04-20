@@ -20,23 +20,16 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name="Stock")
-
 public class Stock implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Id_Stock")
 	private int IdStock;
-	@Column(name = "Name_Stock")
 	private String NameStock;
-	@Column(name = "Quantity_Stock")
 	private int QuantityStock;
-	@Column(name = "Fournisseur")
 	private String Fournisseur;
-	@Column(name= "Entry_Date")
 	private Date Entry_Date;
 	
 	//@OneToMany(mappedBy="stock")

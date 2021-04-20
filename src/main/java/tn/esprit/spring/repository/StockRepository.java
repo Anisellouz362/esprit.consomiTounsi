@@ -12,4 +12,4 @@ public interface StockRepository extends CrudRepository<Stock , Integer> {
 	public List<Stock> OutOfStockDetector();
 	
 
-}
+} 

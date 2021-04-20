@@ -63,6 +63,5 @@ public class StockRestController {
 				 public List<Stock> OutOfStockDetector(){
 			  return iStockService.OutOfStockDetector();
 				 }
-				 
 
 }

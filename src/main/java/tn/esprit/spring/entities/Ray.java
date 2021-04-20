@@ -15,23 +15,16 @@ import javax.persistence.Table;
 //import tn.esprit.spring.entities.Product;
 
 @Entity 
-@Table(name="Ray")
-
 public class Ray implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "Ray_Id")
 	private int RayId;
-	@Column(name = "Ray_Name")
 	private String RayName;
-	@Column(name = "Ray_Type")
 	private String RayType;
-	@Column(name = "Arrangement_Type")
 	private String ArranType;
-	@Column(name = "Ray_Capacity")
 	private int RayCapacity;
 	
 	//@OneToMany(mappedBy="ray")
