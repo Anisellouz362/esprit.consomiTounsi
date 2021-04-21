@@ -1,13 +1,13 @@
 package tn.esprit.spring.service;
 
 import java.util.List;
-import tn.esprit.spring.entities.role;
+import tn.esprit.spring.entities.Role;
 
 public interface IRoleService {
-	public role save(role r);
-	List<role> retrieveAllRoles();
+	public Role save(Role r);
+	List<Role> retrieveAllRoles();
 	void deleteRole(long id);
-	role updateRole(role r);
+	Role updateRole(Role r);
 	
 
 }

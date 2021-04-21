@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tn.esprit.spring.entities.role;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.repository.RoleRepository;
 
 @Service
@@ -19,7 +19,7 @@ public class RoleService implements IRoleService{
 	private static final Logger L =  LogManager.getLogger(IRoleService.class);
 	
 	@Override
-	public role save(role r) {
+	public Role save(Role r) {
 		// TODO Auto-generated method stub
 		return rr.save(r);
 	}
@@ -27,10 +27,10 @@ public class RoleService implements IRoleService{
 	
 	
 	@Override
-	public List<role> retrieveAllRoles() {
+	public List<Role> retrieveAllRoles() {
 		// TODO Auto-generated method stub
-		List<role> role = (List<role>) rr.findAll();
-		for (role rolee : role){
+		List<Role> role = (List<Role>) rr.findAll();
+		for (Role rolee : role){
 		L.info("role +++: " + rolee );}
 		return role;	}
 	
@@ -38,7 +38,7 @@ public class RoleService implements IRoleService{
 	
 	@Override
 	public void deleteRole(long id) {
-Optional<role> role = rr.findById(id);
+Optional<Role> role = rr.findById(id);
 	    
 	    if(role.isPresent()) 
 	    {
@@ -47,11 +47,11 @@ Optional<role> role = rr.findById(id);
 		
 	}
 	@Override
-	public role updateRole(role r) {
-		Optional<role> rolee = rr.findById(r.getId());
+	public Role updateRole(Role r) {
+		Optional<Role> rolee = rr.findById(r.getId());
 		if(rolee.isPresent()) 
 	    {
-		     role newRole = rolee.get();
+		     Role newRole = rolee.get();
 		     newRole.setId(r.getId());
 		     newRole.setRole(r.getRole());
 		     newRole.setDesc(r.getDesc());

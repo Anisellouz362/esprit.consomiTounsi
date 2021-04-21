@@ -1,9 +1,17 @@
 package tn.esprit.spring.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+
+import tn.esprit.spring.entities.User;
+import tn.esprit.spring.service.UserService;
 
 @Controller
 public class AuthetificationController {
@@ -16,15 +24,15 @@ public class AuthetificationController {
 		return modelAndView;
 	}
 	
-	/*
+	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView register() {
 		ModelAndView modelAndView = new ModelAndView();
-		// User user = new User();
-		// modelAndView.addObject("user", user); 
+		 User user = new User();
+		 modelAndView.addObject("user", user); 
 		modelAndView.setViewName("register"); // resources/template/register.html
 		return modelAndView;
-	}*/
+	}
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public ModelAndView home() {
@@ -32,5 +40,32 @@ public class AuthetificationController {
 		modelAndView.setViewName("home"); // resources/template/home.html
 		return modelAndView;
 	}
+	
+	
+	@Autowired
+	UserService userService; 
+	
+	@RequestMapping(value="/register", method=RequestMethod.POST)
+	public ModelAndView registerUser(@Valid User user, BindingResult bindingResult, ModelMap modelMap) {
+		ModelAndView modelAndView = new ModelAndView();
+		// Check for the validations
+		if(bindingResult.hasErrors()) {
+			modelAndView.addObject("successMessage", "Please correct the errors in form!");
+			modelMap.addAttribute("bindingResult", bindingResult);
+		}
+	//	else if(userService.isUserAlreadyPresent(user)){
+	//		modelAndView.addObject("successMessage", "user already exists!");			
+	//	}
+		// we will save the user if, no binding errors
+		else {
+			userService.save(user);
+			modelAndView.addObject("successMessage", "User is registered successfully!");
+		}
+		modelAndView.addObject("user", new User());
+		modelAndView.setViewName("register");
+		return modelAndView;
+	}
+	
+	
 	
 }

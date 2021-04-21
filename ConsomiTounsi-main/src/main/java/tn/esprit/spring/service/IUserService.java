@@ -9,5 +9,6 @@ public interface IUserService {
 List<User> retrieveAllUser();
 void deleteUser(long id);
 User updateUser(User user);
+public boolean isUserAlreadyPresent(User user);
 
 }

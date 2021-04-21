@@ -1,14 +1,21 @@
 package tn.esprit.spring.service;
 
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import tn.esprit.spring.entities.User;
+import tn.esprit.spring.entities.Role;
+import tn.esprit.spring.repository.RoleRepository;
 import tn.esprit.spring.repository.UserRepository;
 
 @Service
@@ -16,12 +23,20 @@ import tn.esprit.spring.repository.UserRepository;
 public class UserService implements IUserService {
 	@Autowired
 UserRepository ur; 
+	@Autowired
+	BCryptPasswordEncoder encoder;
+	@Autowired
+	RoleRepository rr;
+	
 	private static final Logger L =  LogManager.getLogger(IUserService.class);
 
 	@Override
 	public User save(User user) {
-		// TODO Auto-generated method stub
-		return ur.save(user);
+		user.setPassword(encoder.encode(user.getPassword()));
+		user.setStatus("VERIFIED");
+		Role userRole = rr.findByRole("SITE_USER");
+		user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
+			return ur.save(user);
 	}
 
 	@Override
@@ -59,7 +74,7 @@ UserRepository ur;
 	        newUser.setPhone(user.getPhone());
 	        newUser.setPassword(user.getPassword());
 	        newUser.setAdress(user.getAdress());
-	      //  newUser.setRoles(user.getRoles());
+	        newUser.setRoles(user.getRoles());
 
 	        
 
@@ -72,4 +87,17 @@ UserRepository ur;
 	    }
 	}
 
+	@Override
+	public boolean isUserAlreadyPresent(User user) {
+		// TODO Auto-generated method stub
+		boolean isUserAlreadyExists = false; 
+		
+		if(true == true) {
+			
+		}
+		
+		return isUserAlreadyExists;
+	}
+
+	
 }

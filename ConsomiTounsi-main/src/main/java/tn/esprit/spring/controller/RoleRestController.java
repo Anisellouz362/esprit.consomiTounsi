@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tn.esprit.spring.entities.role;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.service.RoleService;
 
 @RestController
@@ -28,16 +28,16 @@ public class RoleRestController {
 
 		@PostMapping("/add-role")
 		@ResponseBody
-		public role saveRole(@RequestBody role r) {
-			role rolee = RS.save(r);
+		public Role saveRole(@RequestBody Role r) {
+			Role rolee = RS.save(r);
 			return rolee;
 			}
 		
 
 		@GetMapping("/retrieve-all-Role")
 		@ResponseBody
-		public List<role> getRole() {
-		List<role> list = RS.retrieveAllRoles();
+		public List<Role> getRole() {
+		List<Role> list = RS.retrieveAllRoles();
 		return list;
 		}
 		
@@ -51,7 +51,7 @@ public class RoleRestController {
 
 		@PutMapping("/modify-Role/")
 		@ResponseBody
-		public role modifyRole(@RequestBody role r) {
+		public Role modifyRole(@RequestBody Role r) {
 		return RS.updateRole(r);
 		}
 		
