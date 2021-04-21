@@ -34,9 +34,6 @@ public class Stock implements Serializable{
 	//@OneToMany(mappedBy="stock")
 	//private List<Produit> produit;
 	
-	//@OneToMany(mappedBy="stockP")
-	//private List<Provider> provider;
-
 	public int getIdStock() {
 		return IdStock;
 	}
