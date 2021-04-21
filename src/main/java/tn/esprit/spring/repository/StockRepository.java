@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 
 
-
 public interface StockRepository extends CrudRepository<Stock , Integer> {
 	
 	@Query(value="SELECT u FROM Stock u WHERE u.QuantityStock=0")

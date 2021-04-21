@@ -13,7 +13,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
-
 @Entity
 @Table(name = "VisiteV_Virtuelle")
 

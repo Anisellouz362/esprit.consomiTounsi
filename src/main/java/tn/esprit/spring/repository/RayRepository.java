@@ -7,3 +7,4 @@ import tn.esprit.spring.entities.Ray;
 public interface RayRepository extends CrudRepository<Ray , Integer> {
 
 }
+

@@ -18,7 +18,6 @@ import javax.persistence.Table;
 
 
 
-
 @Entity
 public class Stock implements Serializable{
 	
