@@ -14,7 +14,8 @@ public interface IStockSerivce {
 	
 	//void deleteStock(long id);
 	Stock updateStock(Stock stock);
-	
+	void stockpdf(Long id);
+
 	
 
 }

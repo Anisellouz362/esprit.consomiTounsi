@@ -63,5 +63,11 @@ public class StockRestController {
 				 public List<Stock> OutOfStockDetector(){
 			  return iStockService.OutOfStockDetector();
 				 }
-
+				 //http://localhost:8081/SpringMVC/servlet/Stock/showPDF/{id}
+				   @GetMapping("/showPDF/{id}")
+				   public void stockpdf (@PathVariable("id") Long id) {
+					   
+					 iStockService.stockpdf(id);
+				   }
+		
 }
