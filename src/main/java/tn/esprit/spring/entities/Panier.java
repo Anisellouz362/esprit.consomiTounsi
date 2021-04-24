@@ -9,8 +9,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 
@@ -18,27 +21,31 @@ import javax.persistence.TemporalType;
 public class Panier implements Serializable {
 
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private long idpay;
 	@Temporal (TemporalType.DATE)
 	private Date datepayment;
 	@Enumerated(EnumType.STRING)
 	private Typepayment Typepayment;
-
+	//@JsonIgnore
+	@OneToOne(mappedBy="panier")
+	private Facture facture;
 	public Panier() {
 		
 	}
 
-	
-	public long getId() {
-		return id;
+public long getIdpay() {
+		return idpay;
+	}
+public void setIdpay(long idpay) {
+		this.idpay = idpay;
 	}
 
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 
 	public Date getDatepayment() {
