@@ -11,8 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-//import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.entities.Product;
 
 
 
@@ -31,8 +30,8 @@ public class Stock implements Serializable{
 	private String Fournisseur;
 	private Date Entry_Date;
 	
-	//@OneToMany(mappedBy="stock")
-	//private List<Produit> produit;
+	@OneToMany(mappedBy="stock")
+	private List<Product> produit;
 	
 	public int getIdStock() {
 		return IdStock;

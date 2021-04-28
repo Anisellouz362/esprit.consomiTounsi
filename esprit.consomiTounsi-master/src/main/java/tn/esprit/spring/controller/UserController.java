@@ -102,7 +102,13 @@ public class UserController {
 		if (authenticatedUser != null && authenticatedUser.getRole() == Role.ADMINISTRATEUR) {
 			navigateTo = "/pages/admin/welcome.xhtml?faces-redirect=true";
 			setLoggedIn(true);
-		} else {
+		}
+		else if (authenticatedUser != null && authenticatedUser.getRole() == Role.CLIENT) {
+			navigateTo = "/pages/client/welcome.xhtml?faces-redirect=true";
+			setLoggedIn(true);}
+		
+		
+		else {
 			FacesMessage facesMessage = new FacesMessage(
 					"Login Failed: please check your username/password and try again.");
 			FacesContext.getCurrentInstance().addMessage("form:btn", facesMessage);
