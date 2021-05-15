@@ -19,6 +19,7 @@ import tn.esprit.spring.entities.Stock;
 import tn.esprit.spring.service.IStockSerivce;
 import tn.esprit.spring.service.RayService;
 
+
 @RestController
 @RequestMapping("/Stock")
 public class StockRestController {
