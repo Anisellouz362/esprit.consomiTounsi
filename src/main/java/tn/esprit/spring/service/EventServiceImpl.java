@@ -67,7 +67,22 @@ public Event updateEvent(Event even) {
     }
 }*/
 	
+@Autowired
+EventRepository eventRepository;
 
-
-
+@Override
+public int getNombrePlacesEvent(Long idevent){
+	return eventRepository.NombrePlacesEvent(idevent);		
+}
+@Override
+public int getNombreParticpEvent(Long idevent){
+	return eventRepository.NombreParticpEvent(idevent);
+}
+@Override
+public List<Long> getEventList(){
+	return eventRepository.EventList();
+}
+public Event findOne(long id){
+	return eventRepository.findById(id).get();
+	}
 }

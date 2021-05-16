@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tn.esprit.spring.entities.Charite;
 import tn.esprit.spring.entities.Event;
-import tn.esprit.spring.service.ChariteSerice;
+import tn.esprit.spring.service.ChariteService;
 
 @RestController
 @RequestMapping("/Charite")
 public class ChariteRestController {
 @Autowired
-ChariteSerice cs;   
+ChariteService cs;   
 //http://localhost:8081/SpringMVC/servlet/Charite/add-charite
 
 @PostMapping("/add-charite")

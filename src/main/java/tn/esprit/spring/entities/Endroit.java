@@ -43,8 +43,9 @@ public class Endroit implements Serializable{
 	public void setNbplace(int nbplace) {
 		this.nbplace = nbplace;
 	}
+
 	public Endroit() {
-		
+		super();
 	}
 	public Event getEventss() {
 		return eventss;
@@ -52,5 +53,47 @@ public class Endroit implements Serializable{
 	public void setEventss(Event eventss) {
 		this.eventss = eventss;
 	}
+	public Endroit(long id, String emplacement, int nbplace, String statu, Event eventss) {
+		super();
+		this.id = id;
+		this.emplacement = emplacement;
+		this.nbplace = nbplace;
+		this.statu = statu;
+		this.eventss = eventss;
+	}
+	public Endroit(long id, String emplacement, int nbplace, String statu) {
+		super();
+		this.id = id;
+		this.emplacement = emplacement;
+		this.nbplace = nbplace;
+		this.statu = statu;
+	}
+	public Endroit(String emplacement, int nbplace, String statu) {
+		super();
+		this.emplacement = emplacement;
+		this.nbplace = nbplace;
+		this.statu = statu;
+	}
+
+	
+	/*public Endroit(String emplacement, int nbplace, String statu) {
+		super();
+		this.emplacement = emplacement;
+		this.nbplace = nbplace;
+		this.statu = statu;
+	}
+	public Endroit(long id, String emplacement, int nbplace, String statu) {
+		super();
+		this.id = id;
+		this.emplacement = emplacement;
+		this.nbplace = nbplace;
+		this.statu = statu;
+	}*/
+
+	
+	
+	
+	
 	
 }
+

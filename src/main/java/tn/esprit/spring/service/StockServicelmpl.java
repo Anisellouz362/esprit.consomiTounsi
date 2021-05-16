@@ -1,11 +1,5 @@
 package tn.esprit.spring.service;
 
-
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
@@ -17,6 +11,12 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.text.SimpleDateFormat;
+
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
@@ -27,6 +27,7 @@ import com.itextpdf.text.Image;
 import com.itextpdf.text.PageSize;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
 
 import tn.esprit.spring.entities.Stock;
 
@@ -79,7 +80,10 @@ Optional<Stock> stk = Sr.findById((int) id);
 		return(List<Stock>)Sr.OutOfStockDetector();
 	}
 	
+	
 
+
+	
 	@Override
 	public void stockpdf (Long id){
 		try {
@@ -109,7 +113,7 @@ Optional<Stock> stk = Sr.findById((int) id);
 
 		
 			 Font font = FontFactory.getFont("Cooper Black", 15, BaseColor.BLUE);
-			 Date aujourdhui = fr.getEntry_Date();
+			 Date aujourdhui = fr.getEntryDate();
 			 document.add(new Paragraph("idStock   :"+fr.getIdStock()));
 			 SimpleDateFormat formater = null;
 			 formater = new SimpleDateFormat("dd-MM-yy");
@@ -118,7 +122,7 @@ Optional<Stock> stk = Sr.findById((int) id);
 			 document.add(adresse);
 			 
 			 document.add(new Paragraph("Fournisseur :  "+fr.getFournisseur()));
-			 document.add(new Paragraph("Date :  "+fr.getEntry_Date()));
+			 document.add(new Paragraph("Date :  "+fr.getEntryDate()));
 			 document.add(new Paragraph("Quantité:  "+fr.getQuantityStock()));
 			
 			 Font mainFont = FontFactory.getFont("Cooper Black",35, BaseColor.BLACK);

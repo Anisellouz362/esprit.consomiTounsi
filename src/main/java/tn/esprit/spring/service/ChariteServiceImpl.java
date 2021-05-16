@@ -14,7 +14,7 @@ import tn.esprit.spring.entities.Event;
 import tn.esprit.spring.repository.ChariteRepository;
 
 @Service
-public class ChariteServiceImpl implements ChariteSerice{
+public class ChariteServiceImpl implements ChariteService{
 @Autowired
 ChariteRepository cr;
 private static final Logger L =  LogManager.getLogger(EventServiceImpl.class);

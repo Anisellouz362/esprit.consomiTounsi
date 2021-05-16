@@ -11,7 +11,6 @@ public interface IStockSerivce {
 	public int ajouterStock(Stock stock);
 	public void deleteStock(long id);
 	public List<Stock> OutOfStockDetector();
-	
 	//void deleteStock(long id);
 	Stock updateStock(Stock stock);
 	void stockpdf(Long id);

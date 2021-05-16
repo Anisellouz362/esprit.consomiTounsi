@@ -63,6 +63,14 @@ Optional<Publicite> publicite = pr.findById(id);
 	        return publicite;
 	    }}*/
 	
+	@Autowired
+	PubliciteRepository publiciteRepository;
+	
+	@Override
+	public List<Object[]> getTopPub(){
+		return publiciteRepository.TopPub();
+	}
+	
 	@Override
 	public Publicite updatePublicite(Publicite publicite) {
 		// TODO Auto-generated method stub
