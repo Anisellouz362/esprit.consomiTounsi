@@ -25,31 +25,31 @@ import tn.esprit.spring.service.RayService;
 @Controller(value = "rayController")
 
 @ELBeanName(value = "rayController") // nous permettons d'acceder les
-											// variable a partir du code html
-											// ex: usereController.Login
+// variable a partir du code html
+// ex: usereController.Login
 
 @Join(path = "/ray", to = "/ray.jsf")
 public class RayController {
-	
+
 	@Autowired
 	RayService ES;
-	
+
 	private int rayId;
 	private String rayName;
 	private Typeray rayType;
 	private String 	arranType;
 	private int rayCapacity;
-	
-	
+
+
 	private List<Ray> rayons;
 
-	
+
 	public Typeray[] getRayTypes() { return Typeray.values(); }
 
-	
+
 	private int rayIdToBeUpdated;
 
-	
+
 	// add function 
 	public String addrayon() {
 		String navigateTo = null;
@@ -57,58 +57,58 @@ public class RayController {
 		navigateTo = "/ray.xhtml?faces-redirect=true";
 		return navigateTo;
 	}
-	
+
 	// get all rayons
-	
+
 	public List<Ray> getRayons() {
 		rayons = ES.retrieveAllRay();
 		return rayons;
 	}
-	
+
 	// remove rayon
-	
+
 	public String removeRay(long eventId) {
 		String navigateTo = null;
 		ES.deleteRay(eventId);
 		navigateTo = "/ray.xhtml?faces-redirect=true";
 		FacesMessage facesMessage= new FacesMessage("suprimé");
-	FacesContext.getCurrentInstance().addMessage("form:btn", facesMessage);
+		FacesContext.getCurrentInstance().addMessage("form:btn", facesMessage);
 		return navigateTo;
 	}
-	
 
-	
+
+
 	// dispaly events
 	public void displayRay(Ray ray)
 	{
-	this.setRayName(ray.getRayName());
-	this.setRayType(ray.getRayType());
-	this.setRayCapacity(ray.getRayCapacity());
-	this.setRayIdToBeUpdated(ray.getRayId());
+		this.setRayName(ray.getRayName());
+		this.setRayType(ray.getRayType());
+		this.setRayCapacity(ray.getRayCapacity());
+		this.setRayIdToBeUpdated(ray.getRayId());
 	}
 	// update event
-	
-	
+
+
 	public void updateRay()
 	{
 		ES.updateRay(new Ray(rayIdToBeUpdated,rayName,rayType,rayCapacity));
-		}
+	}
 
-	
-	
+
+
 	public RayController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	
-	
-	
+
+
+
 	public int getRayId() {
 		return rayId;
-		
-		
+
+
 	}
 
 	public void setRayId(int rayId) {
@@ -123,7 +123,7 @@ public class RayController {
 		this.rayName = RayName;
 	}
 
-	
+
 	public Typeray getRayType() {
 		return rayType;
 	}
@@ -147,8 +147,8 @@ public class RayController {
 	public void setRayCapacity(int RayCapacity) {
 		this.rayCapacity = RayCapacity;
 	}
-	
-	
+
+
 	public void setRayIdToBeUpdated(int RayIdToBeUpdated) {
 		this.rayIdToBeUpdated = RayIdToBeUpdated;
 	}

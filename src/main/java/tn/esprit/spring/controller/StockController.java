@@ -22,15 +22,15 @@ import tn.esprit.spring.service.IStockSerivce;
 @Controller(value = "stockController")
 
 @ELBeanName(value = "stockController") // nous permettons d'acceder les
-											// variable a partir du code html
-											// ex: usereController.Login
+// variable a partir du code html
+// ex: usereController.Login
 
 @Join(path = "/stock", to = "/stock.jsf")
 public class StockController {
-	
+
 	@Autowired
 	IStockSerivce ES;
-	
+
 	private int idStock;
 	private String nameStock;
 	private String fournisseur;
@@ -40,16 +40,16 @@ public class StockController {
 	private Date entryDate;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 
-	
-	private List<Stock> stocks;
-	
 
-	
+	private List<Stock> stocks;
+
+
+
 	private int stockIdToBeUpdated;
 
-	
+
 	// add function 
-	
+
 	/*public String addStock() {
 	String navigateTo = null;
 	ES.save(((new Stock( nameStock,fournisseur,quantityStock ))));
@@ -57,31 +57,31 @@ public class StockController {
 	return navigateTo;
 
 	}*/public void addStock() {
-		
+
 		ES.save(new Stock( nameStock,fournisseur,quantityStock,entryDate ));
 
-		}
+	}
 
 
-	
+
 	public List<Stock> OutOfStockDetector(){
 		stocks = ES.OutOfStockDetector();
 		return stocks;
 
 	}
-	
-	
-	
-	
+
+
+
+
 	// get all rayons
-	
+
 	public List<Stock> getstocks() {
 		stocks = ES.retrieveAllStock();
 		return stocks;
 	}
-	
+
 	// remove rayon
-	
+
 	public String removeStock(long eventId) {
 		String navigateTo = null;
 		ES.deleteStock(eventId);
@@ -94,41 +94,41 @@ public class StockController {
 		navigateTo = "/stock.xhtml?faces-redirect=true";
 		return navigateTo;
 	}
-	
-	
+
+
 	// dispaly events
 	public void displayStock(Stock ray)
 	{
-	this.setNameStock(ray.getNameStock());
-	this.setFournisseur(ray.getFournisseur());
-	this.setQuantityStock(ray.getQuantityStock());
-	this.setEntryDate(ray.getEntryDate());
+		this.setNameStock(ray.getNameStock());
+		this.setFournisseur(ray.getFournisseur());
+		this.setQuantityStock(ray.getQuantityStock());
+		this.setEntryDate(ray.getEntryDate());
 
-	this.setStockIdToBeUpdated(ray.getIdStock());
+		this.setStockIdToBeUpdated(ray.getIdStock());
 	}
 	// update event
-	
-	
+
+
 	public void updateStock()
 	{
 		ES.updateStock(new Stock(stockIdToBeUpdated,nameStock,fournisseur,quantityStock,entryDate));
-		}
+	}
 
-	
-	
+
+
 	public StockController() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	
-	
-	
+
+
+
 	public int getStockId() {
 		return idStock;
-		
-		
+
+
 	}
 
 	public void setStockId(int rayId) {
@@ -159,8 +159,8 @@ public class StockController {
 	public void setQuantityStock(int quantity) {
 		this.quantityStock = quantity;
 	}
-	
-	
+
+
 	public void setStockIdToBeUpdated(int RayIdToBeUpdated) {
 		this.stockIdToBeUpdated = RayIdToBeUpdated;
 	}
@@ -169,7 +169,7 @@ public class StockController {
 		return stockIdToBeUpdated;
 	}
 
-	
+
 	public Date getEntryDate() {
 		return entryDate;
 	}
@@ -177,5 +177,5 @@ public class StockController {
 	public void setEntryDate(Date endsdate) {
 		this.entryDate = endsdate;
 	}
-	
+
 }

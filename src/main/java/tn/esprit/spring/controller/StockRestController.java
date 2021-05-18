@@ -25,7 +25,7 @@ public class StockRestController {
 	@Autowired
 	IStockSerivce iStockService;
 
-	
+
 	// http://localhost:8081/SpringMVC/servlet/Stock/CommanderStock
 	@PostMapping("/CommanderStock")
 	@ResponseBody
@@ -34,40 +34,40 @@ public class StockRestController {
 		return stock;
 	}
 
-	
+
 	// http://localhost:8081/SpringMVC/servlet/Stock/deleteStock/{IDSTOCK}
-	 @DeleteMapping("/deleteStock/{IdStock}") 
-	 @ResponseBody
+	@DeleteMapping("/deleteStock/{IdStock}") 
+	@ResponseBody
 	public void deleteStock(@PathVariable("IdStock")int IdStock){
-		 iStockService.deleteStock(IdStock);
-	 }
+		iStockService.deleteStock(IdStock);
+	}
 
-	
 
-	
+
+
 	// http://localhost:8081/SpringMVC/servlet/Stock/retrieve-all-Stock
-				@GetMapping("/retrieve-all-Stock")
-				@ResponseBody
-				public List<Stock> getStock() {
-				List<Stock> list = iStockService.retrieveAllStock();
-				return list;
-				}
-				// http://localhost:8081/SpringMVC/servlet/Stock/updatestock
-				@PutMapping("/updatestock")
-				@ResponseBody
-				public Stock modifystock(@RequestBody Stock stock) {
-				return iStockService.updateStock(stock);
-				}
-				// http://localhost:8081/SpringMVC/servlet/Stock/OutOfStockDetector
-				 @GetMapping(value = "OutOfStockDetector") 
-				 public List<Stock> OutOfStockDetector(){
-			  return iStockService.OutOfStockDetector();
-				 }
-				 //http://localhost:8081/SpringMVC/servlet/Stock/showPDF/{id}
-				   @GetMapping("/showPDF/{id}")
-				   public void stockpdf (@PathVariable("id") Long id) {
-					   
-					 iStockService.stockpdf(id);
-				   }
-		
+	@GetMapping("/retrieve-all-Stock")
+	@ResponseBody
+	public List<Stock> getStock() {
+		List<Stock> list = iStockService.retrieveAllStock();
+		return list;
+	}
+	// http://localhost:8081/SpringMVC/servlet/Stock/updatestock
+	@PutMapping("/updatestock")
+	@ResponseBody
+	public Stock modifystock(@RequestBody Stock stock) {
+		return iStockService.updateStock(stock);
+	}
+	// http://localhost:8081/SpringMVC/servlet/Stock/OutOfStockDetector
+	@GetMapping(value = "OutOfStockDetector") 
+	public List<Stock> OutOfStockDetector(){
+		return iStockService.OutOfStockDetector();
+	}
+	//http://localhost:8081/SpringMVC/servlet/Stock/showPDF/{id}
+	@GetMapping("/showPDF/{id}")
+	public void stockpdf (@PathVariable("id") Long id) {
+
+		iStockService.stockpdf(id);
+	}
+
 }
