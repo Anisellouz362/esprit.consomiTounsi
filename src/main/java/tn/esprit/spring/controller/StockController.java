@@ -44,7 +44,6 @@ public class StockController {
 	private List<Stock> stocks;
 
 
-
 	private int stockIdToBeUpdated;
 
 
