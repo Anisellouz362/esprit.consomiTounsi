@@ -33,7 +33,7 @@ import tn.esprit.spring.service.ProductService;
 @ManagedBean
 @SessionScoped
 @ELBeanName(value = "productController") 
-@Join(path = "/Product", to = "/Product.jsf")
+@Join(path = "/Producttest", to = "/Producttest.jsf")
 
 
 public class ProductController {

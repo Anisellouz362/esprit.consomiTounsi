@@ -44,7 +44,7 @@ private Long idcom;
 		navigateTo = "/Commandeadmin.xhtml?faces-redirect=true";
 		return navigateTo;
 		}
-	
+
 	public void displaycommandes(Commande pan)
 	{
 	this.setProductname(pan.getProductname());
@@ -85,7 +85,11 @@ private Long idcom;
 		commande = cs.getAllcommande();
 		return commande;
 	}
-
+	public List<Commande> getCommandebydate(Date commandDate){
+	return cs.getCommandepardate(commandDate);
+	
+	}
+	
 	public void setCommande(List<Commande> commande) {
 		this.commande = commande;
 	}

@@ -79,6 +79,9 @@ public class CommandeService {
 		
 		return commandRepository.save(fr);
 	}
+	public List<Commande> getCommandepardate(Date date){
+		   return commandRepository.findByComandedate(date);
+		}
 
 	public void commandepdf (Long id){
 		try {
@@ -116,10 +119,10 @@ public class CommandeService {
 			 Paragraph adresse=new Paragraph("Nom : "+fr.getName());
 			 document.add(adresse);
 			 
-			 document.add(new Paragraph("Prenom  "+fr.getPrenom()));
-			 document.add(new Paragraph("Date Payment:  "+fr.getCommandDate()));
-			 document.add(new Paragraph("Montant totale  "+fr.getMontantHT()));
-			 document.add(new Paragraph("Type Payment  "+fr.getCommandType()));
+			 document.add(new Paragraph("Prenom  :"+fr.getPrenom()));
+			 document.add(new Paragraph("Date Payment	: "+fr.getCommandDate()));
+			 document.add(new Paragraph("Montant totale  :"+fr.getMontantHT()));
+			 document.add(new Paragraph("Type Payment  :"+fr.getCommandType()));
 				
 			 Font mainFont = FontFactory.getFont("Cooper Black",35, BaseColor.BLACK);
 			 
