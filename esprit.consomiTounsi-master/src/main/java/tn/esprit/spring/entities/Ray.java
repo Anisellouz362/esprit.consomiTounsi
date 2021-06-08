@@ -2,10 +2,14 @@ package tn.esprit.spring.entities;
 
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -24,9 +28,10 @@ public class Ray implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int RayId;
 	private String RayName;
-	private String RayType;
 	private String ArranType;
 	private int RayCapacity;
+	@Enumerated(EnumType.STRING)
+	private Typeray RayType;
 	
 	//@OneToMany(mappedBy="ray")
 	//private List<Produit> produit;
@@ -51,11 +56,11 @@ public class Ray implements Serializable{
 		RayName = rayName;
 	}
 
-	public String getRayType() {
+	public Typeray getRayType() {
 		return RayType;
 	}
 
-	public void setRayType(String rayType) {
+	public void setRayType(Typeray rayType) {
 		RayType = rayType;
 	}
 
@@ -79,6 +84,43 @@ public class Ray implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+	
+	public Ray(String rayname, Typeray rayType,int rayCapacity) {
+		super();
+		this.RayName = rayname;
+		this.RayType = rayType;
+		this.RayCapacity = rayCapacity;
+
+	}
+	public Ray(String rayname, Typeray rayType, String arranType,int rayCapacity) {
+		super();
+	
+		this.RayName = rayname;
+		this.RayType = rayType;
+		this.ArranType = arranType;
+		this.RayCapacity = rayCapacity;
+
+	}
+
+	public Ray() {
+	}
+
+	public Ray(int id, String eventname, Typeray startdate, String endsdate, int publicite) {
+		super();
+		this.RayId = id;
+		this.RayName = eventname;
+		this.RayType = startdate;
+		this.ArranType = endsdate;
+		this.RayCapacity = publicite;
+	}
+
+	public Ray(int id, String eventname, Typeray startdate, int endsdate) {
+		super();
+		this.RayId = id;
+		this.RayName = eventname;
+		this.RayType = startdate;
+		this.RayCapacity = endsdate;
 	}
 	
 	

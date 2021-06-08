@@ -30,10 +30,10 @@ public class StockRestController {
 	@PostMapping("/CommanderStock")
 	@ResponseBody
 	public Stock ajouterStock(@RequestBody Stock stock) {
-		iStockService.ajouterStock(stock);
+		iStockService.save(stock);
 		return stock;
 	}
-	
+
 	
 	// http://localhost:8081/SpringMVC/servlet/Stock/deleteStock/{IDSTOCK}
 	 @DeleteMapping("/deleteStock/{IdStock}") 

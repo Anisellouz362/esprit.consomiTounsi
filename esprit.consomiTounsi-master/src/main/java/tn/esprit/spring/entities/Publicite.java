@@ -103,7 +103,32 @@ public class Publicite implements Serializable{
 
 
 
-	public Publicite() {
-		
+
+
+
+	public Publicite(long id, String nom, Date datedebut, Date datefin) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.datedebut = datedebut;
+		this.datefin = datefin;
 	}
+
+
+
+
+	public Publicite() {
+		super();
+	}
+
+
+
+
+	public Publicite(String nom, Date datedebut, Date datefin) {
+		super();
+		this.nom = nom;
+		this.datedebut = datedebut;
+		this.datefin = datefin;
+	}
+	
 }

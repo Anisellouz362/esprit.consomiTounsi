@@ -103,5 +103,45 @@ public class Event implements Serializable{
 	public Event() {
 		
 	}
+
+	public Event(String eventname, Date startdate, Date endsdate) {
+		super();
+		this.eventname = eventname;
+		this.startdate = startdate;
+		this.endsdate = endsdate;
+	}
+
+	public Event(long id, String eventname, Date startdate, Date endsdate, Publicite publicite, Set<Endroit> endroit,
+			Set<Charite> charite) {
+		super();
+		this.id = id;
+		this.eventname = eventname;
+		this.startdate = startdate;
+		this.endsdate = endsdate;
+		this.publicite = publicite;
+		this.endroit = endroit;
+		this.charite = charite;
+	}
+
+	public Event(long id, String eventname, Date startdate, Date endsdate, Publicite publicite, Set<Endroit> endroit) {
+		super();
+		this.id = id;
+		this.eventname = eventname;
+		this.startdate = startdate;
+		this.endsdate = endsdate;
+		this.publicite = publicite;
+		this.endroit = endroit;
+	}
+
+	public Event(long id, String eventname, Date startdate, Date endsdate) {
+		super();
+		this.id = id;
+		this.eventname = eventname;
+		this.startdate = startdate;
+		this.endsdate = endsdate;
+	}
+	
+	
+	
 	
 }

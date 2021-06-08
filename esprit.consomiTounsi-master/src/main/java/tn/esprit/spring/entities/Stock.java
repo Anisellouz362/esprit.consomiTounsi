@@ -29,7 +29,7 @@ public class Stock implements Serializable{
 	private String NameStock;
 	private int QuantityStock;
 	private String Fournisseur;
-	private Date Entry_Date;
+	private Date EntryDate;
 	
 	//@OneToMany(mappedBy="stock")
 	//private List<Produit> produit;
@@ -71,16 +71,57 @@ public class Stock implements Serializable{
 		Fournisseur = fournisseur;
 	}
 
-	public Date getEntry_Date() {
-		return Entry_Date;
+	public Date getEntryDate() {
+		return EntryDate;
 	}
 
-	public void setEntry_Date(Date entry_Date) {
-		Entry_Date = entry_Date;
+	public void setEntryDate(Date entry_Date) {
+		EntryDate = entry_Date;
 	}
 	
 	
+	public Stock() {
+	}
+
 	
 	
+	
+
+	public Stock(String name, String fournisseur , int quantity) {
+		super();
+		this.NameStock = name;
+		this.Fournisseur = fournisseur;
+		this.QuantityStock = quantity;
+
+	}
+	public Stock(String name, String fournisseur , int quantity ,Date entrydate) {
+		super();
+		this.NameStock = name;
+		this.Fournisseur = fournisseur;
+		this.QuantityStock = quantity;
+		this.EntryDate =entrydate;
+
+	}
+
+	public Stock(int id, String eventname, String startdate, int endsdate, Date publicite) {
+		super();
+		this.IdStock = id;
+		this.NameStock = eventname;
+		this.Fournisseur = startdate;
+		this.QuantityStock = endsdate;
+		this.EntryDate = publicite;
+	}
+
+	public Stock(int id, String eventname, String startdate, int endsdate) 
+	{
+		super();
+		this.IdStock = id;
+		this.NameStock = eventname;
+		this.Fournisseur = startdate;
+		this.QuantityStock = endsdate;
+	}
+
+	
+
 
 }

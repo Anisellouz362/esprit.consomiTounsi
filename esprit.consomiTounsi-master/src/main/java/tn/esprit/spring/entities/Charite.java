@@ -51,4 +51,30 @@ public class Charite implements Serializable{
 	public Charite() {
 		
 	}
+	public Charite(long id, String typecharite, float montantpaye) {
+		super();
+		this.id = id;
+		this.typecharite = typecharite;
+		this.montantpaye = montantpaye;
+	}
+	public Charite(long id, String typecharite, float montantpaye, Event event) {
+		super();
+		this.id = id;
+		this.typecharite = typecharite;
+		this.montantpaye = montantpaye;
+		this.event = event;
+	}
+	public Charite(String typecharite, float montantpaye, Event event) {
+		super();
+		this.typecharite = typecharite;
+		this.montantpaye = montantpaye;
+		this.event = event;
+	}
+	public Charite(String typecharite, float montantpaye) {
+		super();
+		this.typecharite = typecharite;
+		this.montantpaye = montantpaye;
+	}
+
+	
 }
