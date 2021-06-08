@@ -1,13 +1,18 @@
 package tn.esprit.spring.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
+import org.ocpsoft.rewrite.el.ELBeanName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.web.ErrorProperties.Whitelabel;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,12 +26,15 @@ import tn.esprit.spring.entities.DeliveryMan;
 import tn.esprit.spring.entities.MapsCoordonnees;
 import tn.esprit.spring.entities.MoyenTransport;
 import tn.esprit.spring.entities.Product;
+import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.service.IDeliveryManService;
 import tn.esprit.spring.service.IDeliveryService;
 import tn.esprit.spring.service.ProductService;
 
 
-@RestController
+
+@Controller(value = "deliveryController")
+@ELBeanName(value = "deliveryController")
 
 public class DeliveryController {
 
@@ -38,8 +46,160 @@ public class DeliveryController {
 	
 	@Autowired
 	ProductService productService;
+	private List<Delivery> list;
+	private List<Delivery> listClient;
+	private Delivery d = new Delivery();
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Delivery> getListClient() {
+		listClient = iDeliveryService.getAllDeliveriesByClient((long)4);
+		for (Delivery delivery : listClient) {
+			delivery.setFrais(calculerFrais(delivery));
+		}
+		return listClient;
+	}
+
+	public void setListClient(List<Delivery> listClient) {
+		this.listClient = listClient;
+	}
+
+	public void resetDelivery(){
+		d = new Delivery();
+	}
+	
+	public String addDelivery(){
+		MapsCoordonnees mp = new MapsCoordonnees();
+		HashMap<City, CoordonneeCity>map = mp.getMap();
+		CoordonneeCity cordonneee = map.get(d.getLieu());
+		d.setLatitude(cordonneee.getLatitude());
+		d.setLongitude(cordonneee.getLongitude());
+		d.setDeliveryDate(new Date());
+		List<DeliveryMan> men =iDeliveryManService.retrieveAllDeliveryMan();
+		DeliveryMan bonMan = new DeliveryMan();
+		boolean b=false;
+		long id_nonDispo = 0;
+		double distance=5000;
+		while(!b){
+		for (DeliveryMan deliveryMan : men) {
+			double dist =  distance(d.getLatitude(), deliveryMan.getLatitude(), d.getLongitude(), deliveryMan.getLongitude(), 0, 0);
+			dist/=1000;
+			System.out.println("distance : "+dist);
+			if(dist<distance && deliveryMan.getId()!=id_nonDispo){
+				distance = dist;
+				bonMan = deliveryMan;
+			}
+		}
+		if(!bonMan.isDisponible())id_nonDispo=bonMan.getId();
+		else
+			b=true;
+		}
+		d.setDeliveryMans(bonMan);
+		
+		  iDeliveryService.addDelivery(d);
+			return "/pages/admin/listeDelivery.xhtml?faces-redirect=true";
+	}
+	
+	
+	
+	
+	
+	public void removeDelivery(Long id){
+		iDeliveryService.deleteDelivery(Long.toString(id));
+	}
+	
+	public String updateDelivery(Delivery d1){
+		d= d1;
+		return "/pages/admin/saveDelivery.xhtml?faces-redirect=true";
+	}
+	
+	
+	
+	
+	public City[] getCities() {
+		return City.values();
+	}
+	
+	public MoyenTransport[] getMoyenTransports() {
+		return MoyenTransport.values();
+	}
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<Delivery> getList() {
+		list = iDeliveryService.getAllDeliveries();
+		for (Delivery delivery : list) {
+			delivery.setFrais(calculerFrais(delivery));
+		}
+		return list;
+	}
+
+
+
+
+
+
+
+
+	public void setList(List<Delivery> list) {
+		this.list = list;
+	}
+
+
+
+
+
+
+
+
+	public Delivery getD() {
+		return d;
+	}
+
+
+
+
+
+
+
+
+	public void setD(Delivery d) {
+		this.d = d;
+	}
+
+
+
+
+
+
+
 
 	@GetMapping("/get-all-deliveries")
 	@ResponseBody
@@ -47,6 +207,30 @@ public class DeliveryController {
 		List<Delivery> list = iDeliveryService.getAllDeliveries();
 		return list;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	@DeleteMapping("/deleteDeliveryRest/{delivery-id}")
+	@ResponseBody
+	public String DeleteDelivery(@PathVariable("delivery-id") String id) {
+		iDeliveryService.deleteDelivery(id);
+		System.out.println("delete Delivery N"+id);
+	     return "delete Delivery N"+id;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
 
 	@GetMapping("/get-delivery/{delivery-id}")
 	@ResponseBody
@@ -62,7 +246,7 @@ public class DeliveryController {
 		CoordonneeCity cordonneee = map.get(d.getLieu());
 		d.setLatitude(cordonneee.getLatitude());
 		d.setLongitude(cordonneee.getLongitude());
-		
+		d.setDeliveryDate(new Date());
 		List<DeliveryMan> men =iDeliveryManService.retrieveAllDeliveryMan();
 		DeliveryMan bonMan = new DeliveryMan();
 		
@@ -100,8 +284,15 @@ public class DeliveryController {
 	
 	@GetMapping("/calculer-frais/{delivery-id}")
 	@ResponseBody
-	public float calculerFrais(@PathVariable("delivery-id") String id) {
+	public float calculerFraisMeth(@PathVariable("delivery-id") String id) {
 		Delivery d = iDeliveryService.getDelivery(id);
+		return calculerFrais(d);
+	}
+	
+	
+	
+	
+	public static float calculerFrais(Delivery d){
 		float sommePoids = 0;
 		Set<Product> products = d.getProducts();
 		for (Product product : products) {
@@ -118,11 +309,6 @@ public class DeliveryController {
 		System.out.println("distance : "+distance);
 		return frais;
 	}
-	
-	
-	
-	
-	
 	
 	
 	
@@ -160,6 +346,99 @@ public class DeliveryController {
 	}
 	
 	
+	
+	/*
+	
+	
+	
+	
+	
+	
+	
+	@GetMapping("/deliveriesList")
+	public String getDeliveries(Model model) {
+		List<Delivery> list = iDeliveryService.getAllDeliveries();
+		for (Delivery delivery : list) {
+			delivery.setFrais(calculerFrais(delivery));
+		}
+		model.addAttribute("listDeliveries", list);
+		return "listDeliveries";
+	}
+	
+	@GetMapping("/showNewDeliveryForm")
+	public String showNewDeliveryManForm(Model model){
+		Delivery d = new Delivery();
+		model.addAttribute("delivery",d);
+		model.addAttribute("cities", City.values());
+		model.addAttribute("moyenTransports", MoyenTransport.values());
+		return "new_delivery";
+	}
+	
+	
+	@PostMapping("/newDelivery")
+	public String newDeliveryMan(@ModelAttribute ("delivery") Delivery d) {
+		MapsCoordonnees mp = new MapsCoordonnees();
+		HashMap<City, CoordonneeCity>map = mp.getMap();
+		CoordonneeCity cordonneee = map.get(d.getLieu());
+		d.setLatitude(cordonneee.getLatitude());
+		d.setLongitude(cordonneee.getLongitude());
+		d.setDeliveryDate(new Date());
+		List<DeliveryMan> men =iDeliveryManService.retrieveAllDeliveryMan();
+		DeliveryMan bonMan = new DeliveryMan();
+		boolean b=false;
+		long id_nonDispo = 0;
+		double distance=5000;
+		while(!b){
+		for (DeliveryMan deliveryMan : men) {
+			double dist =  distance(d.getLatitude(), deliveryMan.getLatitude(), d.getLongitude(), deliveryMan.getLongitude(), 0, 0);
+			dist/=1000;
+			System.out.println("distance : "+dist);
+			if(dist<distance && deliveryMan.getId()!=id_nonDispo){
+				distance = dist;
+				bonMan = deliveryMan;
+			}
+		}
+		if(!bonMan.isDisponible())id_nonDispo=bonMan.getId();
+		else
+			b=true;
+		}
+		d.setDeliveryMans(bonMan);
+		
+		  iDeliveryService.addDelivery(d);
+	     return "redirect:/servlet/deliveriesList";
+	     
+	     
+	}
+
+	
+	@GetMapping("/showFormForUpdateDelivery/{delivery-id}")
+	public String showFormForUpdate(@PathVariable("delivery-id") String id, Model model) {
+		Delivery d =  iDeliveryService.getDelivery(id);
+		model.addAttribute("delivery",d);
+		model.addAttribute("cities", City.values());
+		model.addAttribute("moyenTransports", MoyenTransport.values());
+		return "new_delivery";
+	}
+	
+	
+	@GetMapping("/deleteDelivery/{delivery-id}")
+	public String DeleteDeliveryRest(@PathVariable("delivery-id") String id) {
+		iDeliveryService.deleteDelivery(id);
+		System.out.println("delete Delivery N"+id);
+	     return "redirect:/servlet/deliveriesList";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	*/
 	
 	
 }

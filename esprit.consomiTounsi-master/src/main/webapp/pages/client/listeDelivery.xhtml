@@ -1,0 +1,120 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="liste Delivery" />
+	<ui:define name="title">Choisir une fonctionnalité : </ui:define>
+	<br />
+	<ui:define name="content">
+		<!-- BEGIN : content -->
+
+		<h1>List Delivery</h1>
+
+
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{deliveryController.listClient}" var="delivery"
+					border="1" class="table table-striped table-responsive-md">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="deliveryMan Full Name" />
+						</f:facet>
+						<h:outputText value="#{delivery.deliveryMans.nom} #{delivery.deliveryMans.prenom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="deliveryMan Phone" />
+						</f:facet>
+						<h:outputText value="#{delivery.deliveryMans.phone}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="deliveryDate" />
+						</f:facet>
+						<h:outputText value="#{delivery.deliveryDate}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Status" />
+						</f:facet>
+						<h:outputText value="#{delivery.status}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="moyenTransport" />
+						</f:facet>
+						<h:outputText value="#{delivery.moyenTransport}" />
+					</h:column>
+					
+						<h:column>
+						<f:facet name="header">
+							<h:outputText value="City" />
+						</f:facet>
+						<h:outputText value="#{delivery.lieu}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Frais" />
+						</f:facet>
+						<h:outputText value="#{delivery.frais}" />
+					</h:column>
+					
+					
+					
+					
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+
+<div class="d-flex flex-row">
+
+						
+
+
+
+						<h:commandButton
+							action="#{reclamationController.showAddReclamation(delivery)}"
+							class="btn btn-primary mx-2" value="Add reclamation" />
+</div>
+
+
+
+
+
+					</h:column>
+
+
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

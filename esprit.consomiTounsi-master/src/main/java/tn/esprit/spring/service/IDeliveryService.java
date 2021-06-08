@@ -12,6 +12,7 @@ import tn.esprit.spring.entities.Delivery;
 
 public interface IDeliveryService {
 	List<Delivery> getAllDeliveries();
+	List<Delivery> getAllDeliveriesByClient(Long idClient);
 
 	Delivery addDelivery(Delivery d);
 

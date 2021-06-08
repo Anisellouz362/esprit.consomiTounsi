@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="send email" />
+	<ui:define name="title">Choisir une fonctionnalité : </ui:define>
+	<br />
+	<ui:define name="content">
+		<!-- BEGIN : content -->
+
+
+		<h:panelGroup columns="2">
+			<h1>Send mail to Client <h:outputText value="#{reclamationController.r.client.nom} #{reclamationController.r.client.prenom}"></h:outputText>
+			</h1>
+			
+			<hr />
+			<h:form>
+				<table>
+					
+
+					<tr>
+						<td><h:outputText value="Subject"></h:outputText></td>
+						<td><h:inputText value="#{reclamationController.m.subject}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+					<tr>
+						<td><h:outputText value="Content"></h:outputText></td>
+						<td><h:inputTextarea
+								value="#{reclamationController.m.content}"
+								class="form-control mb-4 " /></td>
+					</tr>
+
+
+
+
+
+
+					<tr>
+						<td colspan="2"><h:commandButton value="Send"
+								action="#{reclamationController.sendMail()}"
+								class="btn btn-primary mb-5" /></td>
+
+					</tr>
+				</table>
+			</h:form>
+			
+			<h:link outcome="/pages/admin/listeReclamation"
+				value="Go back to list"></h:link>
+			
+			
+			
+		</h:panelGroup>
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

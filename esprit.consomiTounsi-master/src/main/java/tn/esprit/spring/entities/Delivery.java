@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -38,9 +39,16 @@ public class Delivery implements Serializable {
 	@Column(name = "DELIVERY_STATUS")
 	private String status;
 
+	@Transient
+	private float frais;
+	
+	
 	
 	@ManyToOne
 	DeliveryMan deliveryMans;
+	
+	@ManyToOne
+	Client client;
 	
 	
 	
@@ -98,7 +106,15 @@ public class Delivery implements Serializable {
 	}
 
 
-/*
+public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	/*
 	public Set<Order> getOrders() {
 		return orders;
 	}*/
@@ -166,6 +182,24 @@ public class Delivery implements Serializable {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+
+	
+	
+	
+	public float getFrais() {
+		return frais;
+	}
+
+	public void setFrais(float frais) {
+		this.frais = frais;
+	}
+
+	@Override
+	public String toString() {
+		return "Delivery [id=" + id + ", deliveryDate=" + deliveryDate + ", status=" + status + ", deliveryMans="
+				+ deliveryMans + ", lieu=" + lieu + ", moyenTransport=" + moyenTransport + ", longitude=" + longitude
+				+ ", latitude=" + latitude + ", products=" + products + "]";
 	}
 
 	

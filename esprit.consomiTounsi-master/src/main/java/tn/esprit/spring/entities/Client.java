@@ -29,7 +29,9 @@ public class Client  extends User implements Serializable{
 	public Client() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy="client",fetch = FetchType.EAGER)
+	private Set<Delivery> deliveries;
 	
 
 	public Client(Long id, Set<Reclamations> reclamations) {
@@ -62,10 +64,6 @@ public class Client  extends User implements Serializable{
 
 
 
-	@Override
-	public String toString() {
-		return "Client [id=" + id + ", reclamations=" + reclamations + "]";
-	}
 	
 	
 	

@@ -24,7 +24,10 @@ public class User implements Serializable {
 	@Column
 	private String password;
 	
+	private int phone;
 
+	private String address;
+	
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
@@ -68,6 +71,22 @@ public class User implements Serializable {
 			}
 
 	
+	
+
+
+	public User(Long id, String prenom, String nom, String email, String password, int phone, String address,
+			Role role) {
+		super();
+		this.id = id;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.email = email;
+		this.password = password;
+		this.phone = phone;
+		this.address = address;
+		this.role = role;
+	}
+
 
 
 	public User(Long id2, String nom2) {
@@ -137,11 +156,36 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
-		return prenom;
+		return "User [id=" + id + ", prenom=" + prenom + ", nom=" + nom + ", email=" + email + ", password=" + password
+				+ ", phone=" + phone + ", address=" + address + ", role=" + role + "]";
+	}
+*/
+
+
+	public int getPhone() {
+		return phone;
 	}
 
+
+
+	public void setPhone(int phone) {
+		this.phone = phone;
+	}
+
+
+
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	
 
 	
 	//.

@@ -1,0 +1,110 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="save DeliveryMan" />
+	<ui:define name="title">Choisir une fonctionnalité : </ui:define>
+	<br />
+	<ui:define name="content">
+		<!-- BEGIN : content -->
+
+
+		<h:panelGroup columns="2">
+			<h1>save DeliveryMan</h1>
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="First Name"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.nom}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+					<tr>
+						<td><h:outputText value="Last Name"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.prenom}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+					<tr>
+						<td><h:outputText value="Email"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.email}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+
+					<tr>
+						<td><h:outputText value="Password"></h:outputText></td>
+						<td><h:inputText
+								value="#{deliveryManController.d.password}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+					<tr>
+						<td><h:outputText value="Salary"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.salary}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td><h:outputText value="Address"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.address}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+
+					<tr>
+						<td><h:outputText value="City"></h:outputText></td>
+						<td><h:selectOneMenu value="#{deliveryManController.d.lieu}"
+								class="form-control mb-4">
+								<f:selectItem itemLabel="Choose City" itemValue="#{null}" />
+								<f:selectItems value="#{deliveryManController.cities}" />
+							</h:selectOneMenu></td>
+					</tr>
+
+					<tr>
+						<td><h:outputText value="Phone"></h:outputText></td>
+						<td><h:inputText value="#{deliveryManController.d.phone}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+					<tr>
+					
+					
+						<td><h:outputText value="Available / Unavailable"></h:outputText></td>
+						<td><h:selectBooleanCheckbox
+								value="#{deliveryManController.d.disponible}"></h:selectBooleanCheckbox></td>
+					
+					</tr>
+
+
+
+
+					<tr>
+						<td colspan="2"><h:commandButton value="Save DeliveryMan"
+								action="#{deliveryManController.addDeliveryMan()}"
+								class="btn btn-primary mb-5" /> <h:commandButton value="Reset"
+								action="#{deliveryManController.resetDeliveryMan()}"
+								class="btn btn-primary mx-2 mb-5" /></td>
+					</tr>
+				</table>
+			</h:form>
+
+			<h:link outcome="/pages/admin/listeDeliveryMan"
+				value="Go back to list"></h:link>
+
+		</h:panelGroup>
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 
@@ -19,6 +21,40 @@ public class DeliveryMan extends User implements Serializable {
 	private double longitude ;
 	private double latitude ;
 	private boolean disponible;
+	
+	
+	
+	
+	public DeliveryMan() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	
+	
+	
+	
+	public DeliveryMan(float salary, float prime, double longitude, double latitude, boolean disponible, City lieu,
+			Set<Delivery> deliveries) {
+		super();
+		this.salary = salary;
+		this.prime = prime;
+		this.longitude = longitude;
+		this.latitude = latitude;
+		this.disponible = disponible;
+		this.lieu = lieu;
+		this.deliveries = deliveries;
+	}
+
+
+
+
+
+
+	@Enumerated(EnumType.STRING)
+	private City lieu;
+	
+	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy="deliveryMans",fetch = FetchType.EAGER)
 	private Set<Delivery> deliveries;
@@ -81,6 +117,16 @@ public class DeliveryMan extends User implements Serializable {
 
 	public void setDisponible(boolean disponible) {
 		this.disponible = disponible;
+	}
+
+
+	public City getLieu() {
+		return lieu;
+	}
+
+
+	public void setLieu(City lieu) {
+		this.lieu = lieu;
 	}
 	
 	

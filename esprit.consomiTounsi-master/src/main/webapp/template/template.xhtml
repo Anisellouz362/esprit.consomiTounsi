@@ -2,16 +2,44 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 <head>
+
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!--Bootstrap 4 JavaScript-->
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+<script src="https://kit.fontawesome.com/4acbc9339a.js"
+	crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+	integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+	crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
 <title>#{page_name}</title>
 </head>
 <body>
-<ui:include src="/template/header.xhtml" />
-<ui:insert name="menu" />
-<ui:insert name="content" />
-<ui:include src="/template/footer.xhtml" />
+<div class="container">
+	<ui:include src="/template/header.xhtml" />
+	<ui:insert name="menu" />
+	
+		<ui:insert name="content" />
+	
+	<ui:include src="/template/footer.xhtml" />
+	</div>
 </body>
 </html>

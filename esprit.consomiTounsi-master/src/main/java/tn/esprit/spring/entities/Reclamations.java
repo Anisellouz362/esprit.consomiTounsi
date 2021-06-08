@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -36,6 +37,10 @@ public class Reclamations implements Serializable{
 	
 	@ManyToOne
 	Client client;
+	
+	
+	@OneToOne
+	Delivery delivery;
 	
 	public Reclamations() {
 		// TODO Auto-generated constructor stub
@@ -148,6 +153,34 @@ public class Reclamations implements Serializable{
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public Delivery getDelivery() {
+		return delivery;
+	}
+
+
+
+
+
+
+
+
+
+
+
+	public void setDelivery(Delivery delivery) {
+		this.delivery = delivery;
 	}
 
 

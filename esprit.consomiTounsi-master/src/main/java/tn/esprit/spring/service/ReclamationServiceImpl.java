@@ -37,7 +37,7 @@ public class ReclamationServiceImpl implements ReclamationService{
 
 	@Override
 	public void deleteReclamation(Long id) {
-		this.reclamationRepository.deleteById(id);
+		this.reclamationRepository.deleteReclamationById(id);
 	}
 
 	@Override
@@ -48,6 +48,12 @@ public class ReclamationServiceImpl implements ReclamationService{
 	@Override
 	public Optional<Reclamations> retrieveReclamation(Long id) {
 		return this.reclamationRepository.findById(id);
+	}
+
+	@Override
+	public List<Reclamations> retrieveAllReclamationsByClient(Long idClient) {
+		
+		return this.reclamationRepository.findByIdClient(idClient);
 	}
 
 

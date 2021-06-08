@@ -1,0 +1,141 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="liste DeliveryMan" />
+	<ui:define name="title">Choisir une fonctionnalité : </ui:define>
+	<br />
+	<ui:define name="content">
+		<!-- BEGIN : content -->
+
+
+
+
+		<h:link outcome="/pages/admin/saveDeliveryMan" value="Add deliveryMan"></h:link>
+
+
+
+		<h1>List Delivery men</h1>
+
+
+		<h:panelGroup columns="2">
+			<h:form>
+				<h:dataTable value="#{deliveryManController.list}" var="deliveryMan"
+					border="1" class="table table-striped table-responsive-md">
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="First Name" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.nom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Last Name" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.prenom}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Email" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.email}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Phone" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.phone}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Address" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.address}" />
+					</h:column>
+					
+						<h:column>
+						<f:facet name="header">
+							<h:outputText value="Password" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.password}" />
+					</h:column>
+					
+					
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Salary" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.salary}" />
+					</h:column>
+					
+						<h:column>
+						<f:facet name="header">
+							<h:outputText value="City" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.lieu}" />
+					</h:column>
+					
+						<h:column>
+						<f:facet name="header">
+							<h:outputText value="Available" />
+						</f:facet>
+						<h:outputText value="#{deliveryMan.disponible == true ? 'Yes' : 'No'}" />
+					</h:column>
+					
+					
+
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+
+<div class="d-flex flex-row">
+
+						<h:commandButton
+							action="#{deliveryManController.removeDeliveryMan(deliveryMan.id)}"
+							class="btn btn-danger" value="Delete" />
+
+
+
+						<h:commandButton
+							action="#{deliveryManController.updateDeliveryMan(deliveryMan)}"
+							class="btn btn-warning mx-2" value="Update" />
+</div>
+
+
+
+
+
+					</h:column>
+
+
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,65 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jstl/core"
+	template="/template/template.xhtml">
+	<ui:param name="page_name" value="save Delivery" />
+	<ui:define name="title">Choisir une fonctionnalité : </ui:define>
+	<br />
+	<ui:define name="content">
+		<!-- BEGIN : content -->
+
+
+		<h:panelGroup columns="2">
+			<h1>save Delivery</h1>
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Delivery Status"></h:outputText></td>
+						<td><h:inputText value="#{deliveryController.d.status}"
+								class="form-control mb-4 "></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td><h:outputText value="City"></h:outputText></td>
+						<td><h:selectOneMenu value="#{deliveryController.d.lieu}"
+								class="form-control mb-4">
+								<f:selectItem itemLabel="Choose City" itemValue="#{null}" />
+								<f:selectItems value="#{deliveryController.cities}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="moyen Transport"></h:outputText></td>
+						<td><h:selectOneMenu value="#{deliveryController.d.moyenTransport}"
+								class="form-control mb-4">
+								<f:selectItem itemLabel="Choose moyen Transport" itemValue="#{null}" />
+								<f:selectItems value="#{deliveryController.moyenTransports}" />
+							</h:selectOneMenu></td>
+					</tr>
+
+
+					<tr>
+						<td colspan="2"><h:commandButton value="Save Delivery"
+								action="#{deliveryController.addDelivery()}"
+								class="btn btn-primary mb-5" /> <h:commandButton value="Reset"
+								action="#{deliveryController.resetDelivery()}"
+								class="btn btn-primary mx-2 mb-5" /></td>
+					</tr>
+				</table>
+			</h:form>
+
+			<h:link outcome="/pages/admin/listeDelivery"
+				value="Go back to list"></h:link>
+
+		</h:panelGroup>
+
+
+
+
+
+
+
+	</ui:define>
+</ui:composition>

@@ -10,6 +10,7 @@ import tn.esprit.spring.entities.Reclamations;
 public interface ReclamationService {
 
 	List<Reclamations> retrieveAllReclamations();
+	List<Reclamations> retrieveAllReclamationsByClient(Long idClient);
 	Reclamations addReclamation(Reclamations r);
 	void deleteReclamation(Long id);
 	void updateReclamation(Reclamations r);

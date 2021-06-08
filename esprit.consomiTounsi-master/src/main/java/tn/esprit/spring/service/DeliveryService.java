@@ -37,8 +37,7 @@ public class DeliveryService implements IDeliveryService{
 
 	@Override
 	public void deleteDelivery(String id) {
-		iDeliveryRepository.deleteById(Long.parseLong(id));	
-		
+		iDeliveryRepository.deleteDeliveryById(Long.parseLong(id));	
 	}
 
 	/*@Override
@@ -57,6 +56,12 @@ public class DeliveryService implements IDeliveryService{
 		L.info("users +++:"+deliveryToReturn);
 
 		return deliveryToReturn;
+	}
+
+	@Override
+	public List<Delivery> getAllDeliveriesByClient(Long idClient) {
+		// TODO Auto-generated method stub
+		return iDeliveryRepository.findByIdClient(idClient);
 	}
 
 }
