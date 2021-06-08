@@ -2,11 +2,13 @@ package tn.esprit.spring.repository;
 
 import java.util.List;
 
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import tn.esprit.spring.entities.User;
+
 
 
 public interface IUserRepository extends JpaRepository<User, Long> {
@@ -21,5 +23,18 @@ public interface IUserRepository extends JpaRepository<User, Long> {
 	 public User getUserByEmailAndPassword(@Param("email")String login,
 	 @Param("password")String password);
 	 
+	 
+	 
+	 
+	 
+	 //9dim
+	
+		
+		
+		@Query(value="SELECT nom FROM userr ",nativeQuery =true)
+		public List<String> getNomUser();
+		
+		@Query(value="SELECT * FROM userr  where Nom =:nom ",nativeQuery =true)
+		public User getUserByNom(@Param("nom")String nom);
 
 }

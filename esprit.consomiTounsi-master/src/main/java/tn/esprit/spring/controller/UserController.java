@@ -26,6 +26,7 @@ import tn.esprit.spring.service.UserService;
 @ELBeanName(value = "userController") // nous permettons d'acceder les
 											// variable a partir du code html
 											// ex: usereController.Login
+
 @Join(path = "/", to = "/login.jsf")
 public class UserController {
 
@@ -51,7 +52,7 @@ public class UserController {
 		String navigateTo = null;
 		if (authenticatedUser==null || !loggedIn) return "/login.xhtml";
 		es.addOrUpdateUser(((new User(nom, prenom, email, password, role))));
-		navigateTo = "/pages/admin/welcome.xhtml?faces-redirect=true";
+		navigateTo = "/adm.xhtml?faces-redirect=true";
 		return navigateTo;
 	}
 	
@@ -100,9 +101,15 @@ public class UserController {
 		String navigateTo = "null";
 		authenticatedUser = es.authenticate(login, password);
 		if (authenticatedUser != null && authenticatedUser.getRole() == Role.ADMINISTRATEUR) {
-			navigateTo = "/pages/admin/welcome.xhtml?faces-redirect=true";
+			navigateTo = "/adm.xhtml?faces-redirect=true";
 			setLoggedIn(true);
-		} else {
+		}
+		else if (authenticatedUser != null && authenticatedUser.getRole() == Role.CLIENT) {
+			navigateTo = "/client.xhtml?faces-redirect=true";
+			setLoggedIn(true);}
+		
+		
+		else {
 			FacesMessage facesMessage = new FacesMessage(
 					"Login Failed: please check your username/password and try again.");
 			FacesContext.getCurrentInstance().addMessage("form:btn", facesMessage);

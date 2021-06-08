@@ -10,4 +10,6 @@ public interface PubliciteService {
 	List<Publicite> retrieveAllPublicite();
 	void deletePublicite(long id);
 	Publicite updatePublicite(Publicite publicite);
+	List<Object[]> getTopPub();
+
 }
