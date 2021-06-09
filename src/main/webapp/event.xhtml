@@ -209,7 +209,7 @@
 						</f:facet>
 						<h:commandButton
 							action="#{eventController.removeEvent(events.id)}"
-							value="Supprimer" styleClass="btn btn-danger"/>
+							value="Supprimer" styleClass="btn btn-light"/>
 						<h:commandButton
 							action="#{eventController.displayEvent(events)}"
 							value="Afficher" styleClass="btn btn-info"/>
@@ -227,12 +227,12 @@
 <h:panelGrid columns="2">
 
 											<h:outputText value="Please Press the Send SMS Button if you would like to send to all registred users a Notification of the event " />
-										<h:commandButton value="Send Sms  " action="#{eventController.sendsms()}" styleClass="btn btn-warning"/>
+										<h:commandButton value="Send Sms  " action="#{eventController.sendsms()}" styleClass="btn btn-secondary"/>
 										
 				
 											<h:outputText value="Please Press the Send Email  Button if you would like to send to all registred users an Email of the event " />
 										<h:commandButton value="Send Email  "
-										action="#{eventController.sendmail()}" styleClass="btn btn-warning"/>
+										action="#{eventController.sendmail()}" styleClass="btn btn-secondary"/>
 
 										</h:panelGrid>
 					
